@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="src/styles/main.scss" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__menu menu">
+        <a href="/" class="menu__link menu__link--logo">Maps & Posters</a>
+        <a href="#" class="menu__link">Карты</a>
+        <a href="#" class="menu__link">Постеры</a>
+        <a href="#" class="menu__link">Сертификат в подарок</a>
+        <a href="#" class="menu__link">Сотрудничество</a>
+        <a href="#" class="menu__link">Остались вопросы</a>
+        <a href="#" class="menu__link menu__link--cart">Корзина</a>
+      </nav>
+    </header>
+    <div class="showcase">
+      <div class="swiper-container" data-showcase-swiper>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide showcase__item" style="background-image: url('/src/images/wall.jpg');">
+            <div class="showcase__content">
+              Создать свою карту
+            </div>
+          </div>
+          <div class="swiper-slide showcase__item" style="background-image: url('/src/images/kitchen.jpg');">
+            <div class="showcase__content">
+              Создать свою карту
+            </div>
+          </div>
+          <div class="swiper-slide showcase__item" style="background-image: url('/src/images/couch.jpg');">
+            <div class="showcase__content">
+              Создать свою карту
+            </div>
+          </div>
+          <div class="swiper-slide showcase__item" style="background-image: url('/src/images/architecture.jpg');">
+            <div class="showcase__content">
+              Создать свою карту
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-white" data-showcase-swiper-pagination></div>
+        <div class="swiper-button-prev swiper-button-white" data-showcase-swiper-prev></div>
+        <div class="swiper-button-next swiper-button-white" data-showcase-swiper-next></div>
+      </div>
+    </div>
+    <div class="advantages">
+      <div class="advantages__item">
+        <div class="advantages__icon">
+          иконка
+        </div>
+        <div class="advantages__title">
+          У нас охуенно выгодно
+        </div>
+      </div>
+    </div>
+    <script src="src/main.js"></script>
+  </body>
+</html>

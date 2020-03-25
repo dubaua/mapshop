@@ -1,0 +1,56 @@
+@import '../styles/shared/_globals.scss';
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.header {
+  padding: 0 3rem;
+  background: $--color-gray-75;
+}
+
+.menu {
+  display: flex;
+  &__link {
+    display: block;
+    padding: 1.62rem 1rem;
+    font-size: 1.62rem;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+    color: $--color-gray-900;
+
+    &:hover {
+      background: $--color-gray-200;
+    }
+
+    &--cart {
+      margin-left: auto;
+    }
+  }
+}
+
+.showcase {
+  background: $--color-gray-900;
+  &__item.swiper-slide {
+    width: 62vw;
+    height: 62vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.advantages {
+  &__item {
+  }
+  &__icon {
+  }
+  &__title {
+  }
+}
