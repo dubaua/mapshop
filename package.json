@@ -8,6 +8,6 @@
   },
   "scripts": {
     "dev": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "rmdir dist /s /q && parcel build index.html"
   }
 }
