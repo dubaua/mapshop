@@ -1,0 +1,96 @@
+@import '~@/styles/shared/_globals.scss';
+
+$column-count: 12;
+$gutter: 32px;
+
+$main-axis-alignments: (
+  left: flex-start,
+  center: center,
+  right: flex-end,
+  around: space-around,
+  between: space-between,
+);
+
+$cross-axis-alignments: (
+  top: flex-start,
+  middle: center,
+  bottom: flex-end,
+  stretch: stretch,
+  baseline: baseline,
+);
+
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: $gutter * 0.5;
+  padding-left: $gutter * 0.5;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: row wrap;
+  margin-left: $gutter * -0.5;
+  margin-right: $gutter * -0.5;
+}
+
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  box-sizing: border-box;
+  padding-right: $gutter * 0.5;
+  padding-left: $gutter * 0.5;
+  max-width: 100%;
+}
+
+@mixin create-grid-alignments($breakpoint) {
+  @each $suffix, $value in $main-axis-alignments {
+    .row-#{$breakpoint}-#{$suffix} {
+      justify-content: $value;
+    }
+  }
+
+  @each $suffix, $value in $cross-axis-alignments {
+    .row-#{$breakpoint}-#{$suffix} {
+      align-items: $value;
+    }
+
+    .col-#{$breakpoint}-#{$suffix} {
+      align-self: $value;
+    }
+  }
+
+  .col-#{$breakpoint}-first {
+    order: -1;
+  }
+
+  .col-#{$breakpoint}-last {
+    order: 1;
+  }
+}
+
+@mixin create-colunms($breakpoint, $column-count: $column-count) {
+  @for $i from 1 through $column-count {
+    .col-#{$breakpoint}-#{$i} {
+      flex-basis: percentage($i / $column-count);
+      max-width: percentage($i / $column-count);
+    }
+  }
+}
+
+@mixin create-colunm-offsets($breakpoint, $column-count: $column-count) {
+  @for $i from 1 through $column-count {
+    .col-#{$breakpoint}-offset-#{$i} {
+      margin-left: percentage($i / $column-count);
+    }
+  }
+}
+
+@each $breakpoint, $size in $breakpoints {
+  @include from($breakpoint) {
+    @include create-grid-alignments($breakpoint);
+    @include create-colunms($breakpoint);
+    @include create-colunm-offsets($breakpoint);
+  }
+}
