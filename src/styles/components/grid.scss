@@ -1,7 +1,7 @@
-@import '~@/styles/shared/_globals.scss';
+@import '/src/styles/shared/_globals.scss';
 
-$column-count: 12;
-$gutter: 32px;
+$column-count: 5;
+$gutter: 1rem;
 
 $main-axis-alignments: (
   left: flex-start,
