@@ -1,7 +1,7 @@
-@import '../styles/shared/_globals.scss';
+@import '/src/styles/shared/_globals.scss';
 
-$column-count: 12;
-$gutter: 32px;
+$column-count: 5;
+$gutter: 0;
 
 $main-axis-alignments: (
   left: flex-start,
@@ -19,28 +19,28 @@ $cross-axis-alignments: (
   baseline: baseline,
 );
 
-.container {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: $gutter * 0.5;
-  padding-left: $gutter * 0.5;
-}
+// .container {
+//   box-sizing: border-box;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-right: $gutter * 0.5;
+//   padding-left: $gutter * 0.5;
+// }
 
 .row {
   display: flex;
   flex: 0 1 auto;
   flex-flow: row wrap;
-  margin-left: $gutter * -0.5;
-  margin-right: $gutter * -0.5;
+  // margin-left: $gutter * -0.5;
+  // margin-right: $gutter * -0.5;
 }
 
 .col {
   flex-grow: 1;
   flex-basis: 0;
   box-sizing: border-box;
-  padding-right: $gutter * 0.5;
-  padding-left: $gutter * 0.5;
+  // padding-right: $gutter * 0.5;
+  // padding-left: $gutter * 0.5;
   max-width: 100%;
 }
 

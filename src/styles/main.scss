@@ -1,7 +1,8 @@
-@import './shared/_globals.scss';
-
 // компоненты
 @import './components/grid.scss';
+@import '/src/styles/shared/_globals.scss';
+@import '/src/styles/components/grid.scss';
+@import '/src/styles/css-variables.scss';
 
 body {
   font-family: 'Inter', sans-serif;
@@ -12,8 +13,8 @@ body {
 }
 
 .header {
-  padding: 0 4rem;
-  background: $--color-gray-75;
+  padding: 0 var(--padding-x);
+  background: var(--color-gray-75);
 }
 
 .menu {
@@ -23,13 +24,13 @@ body {
   &__link {
     display: block;
     padding: 1.62rem 1rem;
-    font-size: 1.62rem;
+    font-size: var(--font-h2);
     letter-spacing: -0.025em;
     text-decoration: none;
-    color: $--color-gray-900;
+    color: var(--color-gray-900);
 
     &:hover {
-      background: $--color-gray-200;
+      background: var(--color-gray-200);
     }
 
     &--cart {
@@ -39,10 +40,10 @@ body {
 }
 
 .shortcuts {
-  background: $--color-gray-900;
+  background: var(--color-gray-900);
   &__item.swiper-slide {
-    width: 62vw;
-    height: 62vh;
+    width: 60vw;
+    height: 60vh;
     position: relative;
     background-repeat: no-repeat;
     background-position: center center;
@@ -50,51 +51,31 @@ body {
   }
   &__content {
     position: absolute;
-    top: 2rem;
-    left: 4rem;
-    color: $--color-gray-50;
+    top: var(--padding-y);
+    left: var(--padding-x);
+    color: var(--color-gray-50);
     font-weight: bold;
     font-size: 3rem;
     text-shadow: 0 0.38rem 0.62rem rgba(0, 0, 0, 0.62), 0 1rem 2rem rgba(0, 0, 0, 0.38);
   }
 }
 
-.advantages {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4rem;
-  &__item {
-    margin: 2rem 0;
-    flex-basis: 20%;
-  }
+.advantage {
+  margin: var(--padding-y) var(--padding-x);
   &__icon {
     width: 64px;
     height: 64px;
     margin-right: auto;
-    background: $--color-gray-400;
+    background: var(--color-gray-400);
   }
   &__title {
-    margin-top: 1.62rem;
-    font-size: 1.38rem;
-  }
-}
-
-.split {
-  display: flex;
-
-  &__aside {
-    flex-basis: 38%;
-    padding: 0 4rem;
-  }
-
-  &__main {
-    flex-basis: 62%;
-    max-width: 62%;
-    padding: 0 4rem;
+    margin-top: var(--padding-y);
+    font-size: var(--font-h2);
   }
 }
 
 .social {
+  padding: var(--padding-y) var(--padding-x);
   ul {
     list-style: none;
     margin: 0.62rem 0 0 0;
@@ -147,13 +128,27 @@ h3 {
 }
 
 .showcase {
-  width: 100%;
+  padding: var(--padding-y) var(--padding-x);
+  &__swiper {
+    margin-left: calc(var(--padding-x) * -1);
+    margin-right: calc(var(--padding-x) * -1);
+  }
   &__item {
   }
   &__image {
+    display: block;
+  }
+  &__summary {
+    padding: 0 var(--padding-x);
   }
   &__title {
+    margin: 0.5em 0;
   }
   &__price {
   }
+}
+
+.footer {
+  background-color: var(--color-gray-100);
+  padding: var(--padding-y) var(--padding-x);
 }
