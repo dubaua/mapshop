@@ -7,7 +7,7 @@ $breakpoints: (
 	xxl: 1600px,
 );
 
-@mixin from-breakpoint($breakpoint) {
+@mixin from($breakpoint) {
 	$size: map-get($breakpoints, $breakpoint);
 	@if ($size == 0) {
 		@content;

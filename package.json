@@ -1,10 +1,17 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4"
+  },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1",
+    "leaflet": "^1.6.0",
+    "mapbox.js": "^3.3.0",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.3",
-    "swiper": "^5.3.6"
+    "swiper": "^5.3.6",
+    "vue-template-compiler": "^2.6.11"
   },
   "scripts": {
     "dev": "parcel index.html --open",
