@@ -1,20 +1,31 @@
 {
-  "dependencies": {
-    "vue": "^2.6.11",
-    "vue-hot-reload-api": "^2.3.4"
-  },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.1",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.0.0",
+    "html-webpack-plugin": "^4.0.3",
     "leaflet": "^1.6.0",
     "mapbox.js": "^3.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
-    "parcel-bundler": "^1.12.4",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
     "swiper": "^5.3.6",
-    "vue-template-compiler": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "dev": "parcel index.html --open",
+    "dev": "webpack-dev-server --mode development --open",
     "build": "rmdir dist /s /q && parcel build index.html"
   }
 }

@@ -1,8 +1,8 @@
 // компоненты
 @import './components/grid.scss';
-@import '/src/styles/shared/_globals.scss';
-@import '/src/styles/components/grid.scss';
-@import '/src/styles/css-variables.scss';
+@import './shared/_globals.scss';
+@import './components/grid.scss';
+@import './css-variables.scss';
 
 body {
   font-family: 'Inter', sans-serif;

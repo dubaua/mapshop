@@ -1,0 +1,51 @@
+.constructor {
+  margin-top: 46px;
+  &__poster {
+  }
+  &__form {
+  }
+}
+.poster {
+  width: 450px;
+  height: 600px;
+  background-color: darkgrey;
+  margin: auto;
+  position: relative;
+
+  &__map-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  &__text {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 0;
+    right: 0;
+  }
+  &__title {
+  }
+  &__divider {
+  }
+  &__subtitle {
+  }
+}
+.form {
+  &__section {
+  }
+  &__section-title {
+  }
+  &__item {
+  }
+  &__label {
+  }
+  &__input {
+  }
+  &__button {
+  }
+}
+.button {
+  &--primary {
+  }
+}

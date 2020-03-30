@@ -1,6 +1,8 @@
+import Swiper from 'swiper';
 import 'normalize.css';
 import 'swiper/css/swiper.min.css';
-import Swiper from 'swiper';
+import './styles/main.scss';
+import './constructor/constructor.js';
 
 var shortcutsSwiper = new Swiper('[data-shortcuts-swiper]', {
   slidesPerView: 1,
