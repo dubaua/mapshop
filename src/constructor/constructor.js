@@ -7,11 +7,12 @@ import mapbox from 'mapbox.js';
 Vue.use(L);
 Vue.use(mapbox);
 
-const appElem = document.getElementById('constructor-app');
+const appNode = document.getElementById('constructor-app');
 
-if (appElem) {
+if (appNode) {
   var kek = new Vue({
     el: '#constructor-app',
+    name: 'MapConstructor',
     data: {
       form: {
         mapData: {

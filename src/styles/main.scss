@@ -127,27 +127,6 @@ h3 {
   font-size: 1.38rem;
 }
 
-.showcase {
-  padding: var(--padding-y) var(--padding-x);
-  &__swiper {
-    margin-left: calc(var(--padding-x) * -1);
-    margin-right: calc(var(--padding-x) * -1);
-  }
-  &__item {
-  }
-  &__image {
-    display: block;
-  }
-  &__summary {
-    padding: 0 var(--padding-x);
-  }
-  &__title {
-    margin: 0.5em 0;
-  }
-  &__price {
-  }
-}
-
 .footer {
   background-color: var(--color-gray-100);
   padding: var(--padding-y) var(--padding-x);

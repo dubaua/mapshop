@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="spectrum spectrum--medium spectrum--light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,59 +97,50 @@
     </div>
     <div class="row">
       <section class="col col-xs-5 col-lg-3">
-        <div class="showcase">
+        <div class="catalog">
           <h1>Наши работы</h1>
-          <div class="showcase__swiper">
-            <div class="swiper-container" data-showcase-swiper>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="showcase__item">
-                    <img src="/src/images/square.jpg" class="showcase__image" />
-                    <div class="showcase__summary">
-                      <h3 class="showcase__title">30&times;40, рамка БМГ, стекло</h3>
-                      <div class="showcase__price">1 950 ₽</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="showcase__item">
-                    <img src="/src/images/square.jpg" class="showcase__image" />
-                    <div class="showcase__summary">
-                      <h3 class="showcase__title">30&times;40, рамка БМГ, стекло</h3>
-                      <div class="showcase__price">1 950 ₽</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="showcase__item">
-                    <img src="/src/images/square.jpg" class="showcase__image" />
-                    <div class="showcase__summary">
-                      <h3 class="showcase__title">30&times;40, рамка БМГ, стекло</h3>
-                      <div class="showcase__price">1 950 ₽</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="showcase__item">
-                    <img src="/src/images/square.jpg" class="showcase__image" />
-                    <div class="showcase__summary">
-                      <h3 class="showcase__title">30&times;40, рамка БМГ, стекло</h3>
-                      <div class="showcase__price">1 950 ₽</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="showcase__item">
-                    <img src="/src/images/square.jpg" class="showcase__image" />
-                    <div class="showcase__summary">
-                      <h3 class="showcase__title">30&times;40, рамка БМГ, стекло</h3>
-                      <div class="showcase__price">1 950 ₽</div>
-                    </div>
-                  </div>
-                </div>
+          <div class="catalog__list">
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
               </div>
-              <div class="swiper-button-prev" data-showcase-swiper-prev></div>
-              <div class="swiper-button-next" data-showcase-swiper-next></div>
+            </div>
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__item">
+              <img src="/src/images/square.jpg" class="catalog__image" />
+              <div class="catalog__summary">
+                <h3 class="catalog__title">30&times;40, рамка БМГ, стекло</h3>
+                <div class="catalog__price">1 950 ₽</div>
+              </div>
             </div>
           </div>
         </div>
@@ -372,5 +363,106 @@
         </div>
       </div>
     </div>
+
+    <!-- Каталог -->
+    <div id="catalog">
+      <div class="row">
+        <section class="col col-xs-5 col-lg-3">
+          <div class="catalog" :class="{'catalog--fetching': isFetching}">
+            <h1>Постеры</h1>
+            <div class="catalog__list">
+              <div class="catalog__item" v-for="product in products" :key="'product-'+product.id">
+                <img :src="product.photoUrl" class="catalog__image" />
+                <div class="catalog__summary">
+                  <h3 class="catalog__title">{{product.title}}</h3>
+                  <div class="catalog__price">{{product.price}} ₽</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aside class="col col-xs-5 col-lg-2">
+          <form class="filter" @submit.prevent="handleApplyFilter">
+            <h1>Фильтры</h1>
+            <div class="filter__item">
+              <h3 class="filter__title">Цена</h3>
+              <div class="filter__control">
+                <input class="filter__input" v-model.number="filter.priceFrom" placeholder="от 0" />
+                <input class="filter__input" v-model.number="filter.priceTo" placeholder="до 20000" />
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Цвет</h3>
+              <div class="filter__control" v-for="{color, label, id} in colorConfig" :key="'color-'+id">
+                <input
+                  class="filter__input"
+                  type="checkbox"
+                  :id="'color-'+id"
+                  @change="toggleColor(id)"
+                  :checked="isInArray(filter.colorArray, id)"
+                />
+                <label :for="'color-'+id">{{ label }}</label>
+                <div class="color" :style="getColorStyle(color)"></div>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Размер</h3>
+              <div class="filter__control" v-for="{width, height, id} in sizeConfig" :key="'size-'+id">
+                <input
+                  class="filter__input"
+                  type="checkbox"
+                  :id="'size-'+id"
+                  @change="toggleSize(id)"
+                  :checked="isInArray(filter.sizeArray, id)"
+                />
+                <label :for="'size-'+id">{{ getSize(width, height) }}</label>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Ориентация</h3>
+              <div class="filter__control">
+                <input
+                  class="filter__input"
+                  type="radio"
+                  id="catalog-portrait"
+                  v-model="filter.isPortrait"
+                  :value="true"
+                />
+                <label for="catalog-portrait">Портреная</label>
+              </div>
+              <div class="filter__control">
+                <input
+                  class="filter__input"
+                  type="radio"
+                  id="catalog-album"
+                  v-model="filter.isPortrait"
+                  :value="false"
+                />
+                <label for="catalog-album">Альбомная</label>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Сортировка</h3>
+              <div class="filter__control" v-for="{label, id} in sortingConfig" :key="'sorting-'+id">
+                <input
+                  class="filter__input"
+                  type="radio"
+                  :id="'sorting-'+id"
+                  @change="setSorting(id)"
+                  :checked="filter.sortingId === id"
+                />
+                <label :for="'sorting-'+id">{{ label }}</label>
+              </div>
+            </div>
+            <div class="filter__apply">
+              <button type="submit">
+                Применить
+              </button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </div>
+    <!-- Каталог -->
   </body>
 </html>

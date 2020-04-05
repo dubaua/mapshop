@@ -3,6 +3,7 @@ import 'normalize.css';
 import 'swiper/css/swiper.min.css';
 import './styles/main.scss';
 import './constructor/constructor.js';
+import './catalog/catalog.js';
 
 var shortcutsSwiper = new Swiper('[data-shortcuts-swiper]', {
   slidesPerView: 1,
@@ -19,23 +20,5 @@ var shortcutsSwiper = new Swiper('[data-shortcuts-swiper]', {
   pagination: {
     el: '[data-shortcuts-swiper-pagination]',
     clickable: true,
-  },
-});
-
-var showcaseSwiper = new Swiper('[data-showcase-swiper]', {
-  slidesPerView: 1,
-  spaceBetween: 0,
-  breakpoints: {
-    576: {
-      slidesPerView: 2,
-    },
-    1200: {
-      slidesPerView: 3,
-    },
-  },
-  grabCursor: true,
-  navigation: {
-    nextEl: '[data-showcase-swiper-next]',
-    prevEl: '[data-showcase-swiper-prev]',
   },
 });
