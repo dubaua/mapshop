@@ -1,11 +1,11 @@
 import Swiper from 'swiper';
 import 'normalize.css';
 import 'swiper/css/swiper.min.css';
-import './styles/main.scss';
+import '@/styles/main.scss';
 import './constructor/constructor.js';
 import './catalog/catalog.js';
 
-var shortcutsSwiper = new Swiper('[data-shortcuts-swiper]', {
+const shortcutsSwiper = new Swiper('[data-shortcuts-swiper]', {
   slidesPerView: 1,
   breakpoints: {
     1200: {

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__menu menu">
+        <a href="/" class="menu__link menu__link--logo">Maps & Posters</a>
+        <a href="/constructor.html" class="menu__link">Карты</a>
+        <a href="/catalog.html" class="menu__link">Постеры</a>
+        <a href="/content.html" class="menu__link">Сертификат в подарок</a>
+        <a href="/content.html" class="menu__link">Сотрудничество</a>
+        <a href="/content.html" class="menu__link">Остались вопросы</a>
+        <a href="/content.html" class="menu__link menu__link--cart">Корзина</a>
+      </nav>
+    </header>
+
+    <div id="catalog">
+      <div class="row">
+        <section class="col col-xs-5 col-lg-3">
+          <div class="catalog" :class="{'catalog--fetching': isFetching}">
+            <h1>Постеры</h1>
+            <div class="catalog__list">
+              <div class="catalog__item" v-for="product in products" :key="'product-'+product.sku">
+                <img :src="product.imageUrls[0]" class="catalog__image" />
+                <div class="catalog__summary">
+                  <h3 class="catalog__title">{{product.name}}</h3>
+                  <h3 class="catalog__size">{{product.size.label}}</h3>
+                  <div class="catalog__price">{{product.price}} ₽</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aside class="col col-xs-5 col-lg-2">
+          <form class="filter" @submit.prevent="handleApplyFilter">
+            <h1>Фильтры</h1>
+            <div class="filter__item">
+              <h3 class="filter__title">Цена</h3>
+              <div class="filter__control">
+                <input class="filter__input" v-model.number="filter.priceFrom" placeholder="от 0" />
+                <input class="filter__input" v-model.number="filter.priceTo" placeholder="до 20000" />
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Цвет</h3>
+              <div class="filter__control" v-for="{color, label, id} in colorConfig" :key="'color-'+id">
+                <input
+                  class="filter__input"
+                  type="checkbox"
+                  :id="'color-'+id"
+                  @change="toggleInArray('colors', id)"
+                  :checked="isInArray('colors', id)"
+                />
+                <label :for="'color-'+id">{{ label }}</label>
+                <div class="color" :style="getColorStyle(color)"></div>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Размер</h3>
+              <div class="filter__control" v-for="{label, id} in sizeConfig" :key="'size-'+id">
+                <input
+                  class="filter__input"
+                  type="checkbox"
+                  :id="'size-'+id"
+                  @change="toggleInArray('sizes', id)"
+                  :checked="isInArray('sizes', id)"
+                />
+                <label :for="'size-'+id">{{ label }}</label>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Ориентация</h3>
+              <div class="filter__control" v-for="{label, id} in orientationConfig" :key="'orientation-'+id">
+                <input
+                  class="filter__input"
+                  type="checkbox"
+                  :id="'size-'+id"
+                  @change="toggleInArray('orientations', id)"
+                  :checked="isInArray('orientations', id)"
+                />
+                <label :for="'size-'+id">{{ label }}</label>
+              </div>
+            </div>
+            <div class="filter__item">
+              <h3 class="filter__title">Сортировка</h3>
+              <div class="filter__control" v-for="{label, id} in sortingConfig" :key="'sorting-'+id">
+                <input
+                  class="filter__input"
+                  type="radio"
+                  :id="'sorting-'+id"
+                  @change="setSorting(id)"
+                  :checked="filter.sortingId === id"
+                />
+                <label :for="'sorting-'+id">{{ label }}</label>
+              </div>
+            </div>
+            <div class="filter__apply">
+              <button type="submit">
+                Применить
+              </button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </div>
+
+    <footer class="footer">
+      Информация в футере
+    </footer>
+  </body>
+</html>

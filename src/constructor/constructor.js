@@ -10,7 +10,7 @@ Vue.use(mapbox);
 const appNode = document.getElementById('constructor-app');
 
 if (appNode) {
-  var kek = new Vue({
+  const kek = new Vue({
     el: '#constructor-app',
     name: 'MapConstructor',
     data: {
@@ -197,14 +197,16 @@ if (appNode) {
       });
     },
   });
+
+  const map = L.map('constructor-map').setView([51.505, -0.09], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  setTimeout(() => {
+    map.invalidateSize(true);
+  }, 500);
+
 }
 
-var map = L.map('constructor-map').setView([51.505, -0.09], 13);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
-
-setTimeout(() => {
-  map.invalidateSize(true);
-}, 500);

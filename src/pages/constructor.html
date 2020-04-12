@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructor</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__menu menu">
+        <a href="/" class="menu__link menu__link--logo">Maps & Posters</a>
+        <a href="/constructor.html" class="menu__link">Карты</a>
+        <a href="/catalog.html" class="menu__link">Постеры</a>
+        <a href="/content.html" class="menu__link">Сертификат в подарок</a>
+        <a href="/content.html" class="menu__link">Сотрудничество</a>
+        <a href="/content.html" class="menu__link">Остались вопросы</a>
+        <a href="/content.html" class="menu__link menu__link--cart">Корзина</a>
+      </nav>
+    </header>
+
+    <div id="constructor-app">
+      <div class="constructor">
+        <div class="container">
+          <div class="row">
+            <div class="col col-xs-12 col-md-6">
+              <div class="constructor__poster poster">
+                <div class="poster__map-container" id="constructor-map"></div>
+                <div class="poster__text">
+                  <div class="poster__title">
+                    {{ form.text.title }}
+                  </div>
+                  <div class="poster__divider">
+                    {{ form.text.divider }}
+                  </div>
+                  <div class="poster__subtitle">
+                    {{ form.text.subtitle }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-xs-12 col-md-6">
+              <form class="constructor__form form" @submit.prevent="handleForm">
+                <div class="form__section">
+                  <div class="form__section-title">1. Локация</div>
+                  <fieldset class="form__item">
+                    <label class="form__label">
+                      Введите место
+                      <input type="text" class="form__input" v-model="searchInput" />
+                    </label>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите стиль
+                    </legend>
+                    <div class="radio" v-for="style in mapStyles" :key="style.name">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="style"
+                          :value="style.value"
+                          :id="style.name"
+                          :checked="style.value === form.style"
+                          @change="onStyleChange"
+                        />
+                        {{ style.label }}
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите тему
+                    </legend>
+                    <div class="radio" v-for="theme in mapThemes" :key="theme.name">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="theme"
+                          :value="theme.value"
+                          :id="theme.name"
+                          :checked="theme.value === form.theme"
+                          @change="onThemeChange"
+                        />
+                        {{ theme.label }}
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="form__section">
+                  <div class="form__section-title">2. Текст</div>
+                  <fieldset class="form__item">
+                    <label class="form__label">
+                      Введите заголовок
+                      <input type="text" class="form__input" v-model="form.text.title" />
+                    </label>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <label class="form__label">
+                      Введите разделитель
+                      <input type="text" class="form__input" v-model="form.text.divider" />
+                    </label>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <label class="form__label">
+                      Введите подзаголовок
+                      <input type="text" class="form__input" v-model="form.text.subtitle" />
+                    </label>
+                  </fieldset>
+                </div>
+                <div class="form__section">
+                  <div class="form__section-title">3. Размер</div>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите размер плаката
+                    </legend>
+                    <div class="radio" v-for="size in posterSizes" :key="size.value">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="size"
+                          :value="size.value"
+                          :id="size.value"
+                          :checked="size.value === form.size"
+                          @change="onSizeChange"
+                        />
+                        {{ size.label }}
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите ориентацию
+                    </legend>
+                    <div class="radio">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="orientation"
+                          :value="0"
+                          id="portrait"
+                          v-model="form.orientation"
+                        />
+                        Портрет
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="orientation"
+                          :value="1"
+                          id="1"
+                          v-model="form.orientation"
+                        />
+                        Альбом
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите материал
+                    </legend>
+                    <div class="radio" v-for="material in posterMaterials" :key="material.name">
+                      <label class="radio__label" :title="material.description">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="material"
+                          :value="material.value"
+                          :id="material.name"
+                          :checked="material.value === form.material"
+                          @change="onMaterialChange"
+                        />
+                        {{ material.label }}
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form__item">
+                    <legend class="form__label">
+                      Выберите рамку
+                      <span v-if="form.frame > 0">
+                        — {{ posterFrames[form.frame].price }} руб.
+                      </span>
+                    </legend>
+                    <div class="radio" v-for="frame in posterFrames" :key="frame.name">
+                      <label class="radio__label">
+                        <input
+                          type="radio"
+                          class="radio__input"
+                          name="frame"
+                          :value="frame.value"
+                          :id="frame.value"
+                          :checked="frame.value === form.frame"
+                          @change="onFrameChange"
+                        />
+                        {{ frame.label }}
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+                <button class="form__button button button--primary" @submit.prevent="handleForm">
+                  Добавить в корзину {{ posterPrice }} ₽
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      Информация в футере
+    </footer>
+  </body>
+</html>
